@@ -4,7 +4,7 @@
 --
 -- Host: 127.0.0.1:3306
 
--- Generation Time: May 28, 2013 at 11:52 AM
+-- Generation Time: May 29, 2013 at 04:21 AM
 -- Server version: 5.5.31
 -- PHP Version: 5.4.15
 
@@ -53,17 +53,22 @@ CREATE TABLE `passwords` (
   `password` varchar(25) NOT NULL,
   `url` varchar(50) NOT NULL,
   `notes` text NOT NULL,
-  PRIMARY KEY (`password_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=31 ;
+  PRIMARY KEY (`password_id`),
+  KEY `password_id` (`password_id`),
+  KEY `password_id_2` (`password_id`),
+  KEY `url` (`url`),
+  KEY `password_id_3` (`password_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=52 ;
 
 --
 -- Dumping data for table `passwords`
 --
 
 INSERT INTO `passwords` (`password_id`, `password_name`, `login`, `password`, `url`, `notes`) VALUES
-(30, 'mytestpassword', 'testlogin', 'testpassword', 'test.com', 'a test password'),
-(2, 'My Twitter account', 'twitterlogin', 'twitterpassword', 'http://twitter.com', 'my twitter account'),
-(27, 'Another name', 'Login', 'password', 'hotmail', 'NOTES\r\n\r\nWITH\r\nMULTIPLE\r\nLINES\r\nS');
+(48, 'Compte Hotmail', 'yann_trottier@hotmail.com', 'motdepasse', 'http://hotmail.com', 'Voici mon compte hotmail'),
+(49, 'Compte Laptop', 'monLaptop', '12345', 'http://www.google.com', 'Voici le mot de passe de mon compte laptop'),
+(50, 'Mon compte Gmail', 'yann_trottier@gmail.com', 'pass123', 'http://www.gmail.com', 'Voici mon compte Gmail'),
+(51, 'Masterpassword : 123456', 'masterpassword', '123456', 'http://www.google.com', 'Le master password pour ce gestionnaire de mot de passe est 123456!');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

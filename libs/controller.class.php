@@ -11,11 +11,13 @@ class Controller
 {
 	private $variables;
 	
+	//Imports a model's file and creates an instance of the model
     function loadModel($model) {
     	require_once (ROOTDIR . '/models/' . $model . '.php');
         $this->$model = new $model;
     }
     
+    //Output a view with/without the header files
     function loadView($file, $include_headers = true) {
     
 		extract($this->variables);
@@ -35,6 +37,7 @@ class Controller
 		ob_end_flush();
     }
 	
+	//Set the variables the view will require
 	function sendToView($name, $value) {
 		$this->variables[$name] = $value;
 	}

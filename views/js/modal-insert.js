@@ -1,5 +1,6 @@
 /*
 Author: Yann Trottier
+File  : views/js/modal-insert.js
 Desc. : On button click, request URL using ajax. Inserts server response into empty
 		modal <div></div>. Displays modal window.
 */
@@ -7,7 +8,7 @@ Desc. : On button click, request URL using ajax. Inserts server response into em
 var toURL = '';
 
 function onSuccess(data, status) {
-	$("#myModal").html(data);
+	$("#myModal .modal-content").html(data);
 }
 
 function onError(data, status) {
@@ -17,8 +18,9 @@ function onError(data, status) {
 $('a.btn').click(function(e){
 	  e.preventDefault();
 	  toURL = $(this).attr("tohref");
-	  $('#myModal').load(toURL);
+	  $('#myModal .modal-content').load(toURL, function() {
 	  $('#myModal').modal();
+	  });
 });
 
 function sendRequest() {

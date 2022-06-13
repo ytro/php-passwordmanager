@@ -5,16 +5,30 @@ Desc. : Authentication form displayed in modal window; ouputted by the controlle
 -->
 
 <div class="modal-header">
-	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close</button>
-		<h4 id="myModalLabel"><?php echo $data[0]['password_name'];?></h4>
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+        <span id="myModalLabel"><?php echo $data[0]['password_name'];?></span>
 </div>
 <div class="modal-body" id="modal-body-id">
    <form id="commentForm" method="post">
-   <center><label style="font-size:15px"> Enter the master password: </label>
-   <input style="font-size:15px" type="password" name="MasterPass"/></center>
-   <input style="width:20%; float:right" onClick="sendRequest()" id="formSubmit" class="btn btn-primary" value="<?php echo $action?> password" />
+   <div class="form-group <?php if(isset($error)) echo 'has-error'; ?>">
+       <label>
+            <?php 
+                if($action == 'View') echo 'Enter the master password:'; 
+                if($action == 'Delete') echo "Type 'SUPPRIMER'";
+             ?>
+       </label>
+       <input type="<?php 
+                if($action == 'View') echo 'password'; 
+                if($action == 'Delete') echo 'text';?>" 
+              name="MasterPass"
+              class="form-control"/>
+   </div>
+   <input onClick="sendRequest()" id="formSubmit" class="btn btn-primary" value="<?php echo $action?> password" />
    </form>
 </div>
 <?php if(isset($error)): ?> 
-<div class="modal-footer"><h5 style="color:red"><?php echo $error; ?></h5></div>
+    <div class="modal-footer">
+        <div class="form-group has-error">
+        <label class="control-label"><?php echo $error; ?></label>
+    </div>
 <?php endif; ?>
